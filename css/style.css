@@ -35,6 +35,9 @@ input, button, textarea, select{
     font: inherit; 
 }
 
+/* input, button, textarea, select{
+front: inherit;
+} */
 @media (prefers-reduced-motion: reduce){
     html:focus-within {
         scroll-behavior: auto;
@@ -282,6 +285,7 @@ main {
            }
     }
 }
+}
 menu {
     a:is(:link, :visited){
         color: #0e0e0e;
@@ -298,4 +302,5 @@ menu {
     width: 200px;
     object-fit: contain;
    }
-    }
+}
+   
