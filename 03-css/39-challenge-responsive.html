@@ -1,193 +1,220 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
         * {
-  transition: all 0.2s ease-in;
-}
-body {
-  background:url(/imagen/s2.jpg);
-  
-  background-size:contain
-  
-  
-}
+            transition: all 0.2s ease-in;
+        }
 
-main {
-  background-color: #06418d;
-  display: flex;
-  gap: 1rem;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-  width: 850px;
-  margin: 2rem auto;
-  padding: 1rem;
-}
+        body {
+            background: url(/imagen/s2.jpg);
 
-main div {
-  background: #0009;
-  height: 200px;
-  width: 200px;
-}
+            background-size: contain
+        }
 
-main div img {
-  object-fit: cover;
-  width: 200px;
-  height: 200px;
-}
+        main {
+            background-color: #06418d;
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            width: 850px;
+            margin: 2rem auto;
+            padding: 1rem;
+        }
 
-article {
-  background-color: #e1e9eb;
-  display: flex;
-  gap: 1rem;
-  justify-content: center;
-  align-items: center;
-  width: 850px;
-  margin: 2rem auto;
-  padding: 1rem;
-}
+        main div {
+            background: #0009;
+            height: 200px;
+            width: 200px;
+        }
 
-@media (max-width: 860px) {
-  main {
-    width: 500px;
-  }
-  article {
-    width: 500px;
-  }
-}
+        main div img {
+            object-fit: cover;
+            width: 200px;
+            height: 200px;
+        }
 
-@media (max-width: 480px) {
-  main {
-    width: 400px;
-  }
-  article {
-    flex-direction: column;
-    width: 400px;
-  }
-}
-div.character {
-  background: url(/imagen/steven.jpg) no-repeat center /cover;
-  height: 200px;
-  width: 200px;
-  position: relative;
-}
-div.james {
-  background: url(/imagen/james.jpg) no-repeat center /cover;
-  height: 200px;
-  width: 200px;
-  position: relative;
-}
+        article {
+            background-color: #e1e9eb;
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            align-items: center;
+            width: 850px;
+            margin: 2rem auto;
+            padding: 1rem;
+        }
 
-div.gino {
-  background: url(/imagen/gino.jpg) no-repeat center /cover;
-  height: 200px;
-  width: 200px;
-  position: relative;
-}
-div.oliver {
-  background: url(/imagen/oliver.jpg) no-repeat center /cover;
-  height: 200px;
-  width: 200px;
-  position: relative;
-}
+        @media (max-width: 860px) {
+            main {
+                width: 500px;
+            }
 
+            article {
+                width: 500px;
+            }
+        }
 
-h4 {
-  background-color: #0009;
-  color: #fff;
-  font-size: 2rem;
+        @media (max-width: 480px) {
+            main {
+                width: 400px;
+            }
 
-  position: absolute;
-  bottom: 0;
-  margin: 0;
-  width: 100%;
-  transition: all 0.4s ease-in
-}
+            article {
+                flex-direction: column;
+                width: 400px;
+            }
+        }
 
-div:hover h4 {
-  transform: translateY(-20px);
-}
+        div.character {
+            background: url(/imagen/steven.jpg) no-repeat center /cover;
+            height: 200px;
+            width: 200px;
+            position: relative;
+        }
+
+        div.james {
+            background: url(/imagen/james.jpg) no-repeat center /cover;
+            height: 200px;
+            width: 200px;
+            position: relative;
+        }
+
+        div.gino {
+            background: url(/imagen/gino.jpg) no-repeat center /cover;
+            height: 200px;
+            width: 200px;
+            position: relative;
+        }
+
+        div.oliver {
+            background: url(/imagen/oliver.jpg) no-repeat center /cover;
+            height: 200px;
+            width: 200px;
+            position: relative;
+        }
 
 
+        h4 {
+            background-color: #0009;
+            color: #fff;
+            font-size: 2rem;
 
-/* BreakPoint: 1024px */
-@media (max-width: 1024px) {
-  body {
-    background-color: #f00;
-  }
-} 
+            position: absolute;
+            bottom: 0;
+            margin: 0;
+            width: 100%;
+            transition: all 0.4s ease-in
+        }
 
-/* BreakPoint: 768px */
-@media (max-width: 768px) {
-  body {
-    background-color: #0f0;
-  }
-} 
+        div:hover h4 {
+            transform: translateY(-20px);
+        }
 
-/* BreakPoint: 480px */
-@media (max-width: 480px) {
-  body {
-    background-color: #00f;
-  }
-} 
 
+
+        /* BreakPoint: 1024px */
+        @media (max-width: 1024px) {
+            body {
+                background-color: #f00;
+            }
+        }
+
+        /* BreakPoint: 768px */
+        @media (max-width: 768px) {
+            body {
+                background-color: #0f0;
+            }
+        }
+
+        /* BreakPoint: 480px */
+        @media (max-width: 480px) {
+            body {
+                background-color: #00f;
+            }
+        }
+        img {
+            width: 400px;
+            height: 300px;
+            margin: 0 auto;
+            display: flex;
+        }
     </style>
 </head>
-<body>
-    <main>
-        
-      
-<div class="character">
-  <h4>steven</h4>
-</div>
-        
-       
-<div class="james">
-    <h4>james</h4>
-  </div>
-  <div class="gino">
-    <h4>gino</h4>
-  </div>
-  <div class="oliver">
-    <h4>oliver</h4>
-  </div>
-      </main>
-      <article>
-        <div class="img">
-          <img src="/imagen/creador.jpg" >
-        </div>
-        <div class="txt">
-          <h2>Yōichi Takahash</h2>
-          <p>Yōichi Takahashi  Tokio, 28 de julio de 1960 es un mangaka japonés, principalmente conocido por su serie de manga Captain Tsubasa. La adaptación a serie de anime de Captain Tsubasa fue promovida por una organización de deportes japonés, ya que su historia habla sobre fútbol. Los japoneses tenían en mente promover el deporte en su país.</p>
-        
-          
-        </div>
-      </article>
-      <article>
-        <div class="img">
-          <img src="/imagen/super.jpg" >
-        </div>
-        <div class="txt">
-          <h2>Super Campeones</h2>
-          <p> El anime se desarrolló apenas dos años después de que circulara el respectivo manga del mismo nombre, y tuvo gran éxito a nivel internacional, siendo emitido originalmente entre 1983 y 1986 por la cadena TV Tokyo y dirigida por Isamu Imakake. En las décadas siguientes se hicieron cortas secuelas televisivas </p>
-        
-          
-        </div>
-      </article>
-      <article>
-        <div class="img">
-          <img src="/imagen/k.jpg" >
-        </div>
-        <div class="txt">
-          <h2>kazuyoshi miura</h2>
-          <p> Kazuyoshi Miura inspiró a Yoichi Takahashi para crear el personaje de 'Oliver Atom' (Captain Tsubasa), protagonista del manga y el anime Los Supercampeones, quien en la historia migra a Brasil para convertirse en el mejor futbolista del mundo al igual que Miura </p>
-        
-          
-        </div>
-      </article>
+
+
+<body class="html">
+
+    <head>
+        <img src="/imagen/log.jpg" alt="">
+    </head>
+    <section>
+        <main>
+
+
+            <div class="character">
+                <h4>steven</h4>
+            </div>
+
+
+            <div class="james">
+                <h4>james</h4>
+            </div>
+            <div class="gino">
+                <h4>gino</h4>
+            </div>
+            <div class="oliver">
+                <h4>oliver</h4>
+            </div>
+        </main>
+        <article>
+            <div class="img">
+                <img src="/imagen/creador.jpg">
+            </div>
+            <div class="txt">
+                <h2>Yōichi Takahash</h2>
+                <p>Yōichi Takahashi Tokio, 28 de julio de 1960 es un mangaka japonés, principalmente conocido por su
+                    serie de manga Captain Tsubasa. La adaptación a serie de anime de Captain Tsubasa fue promovida por
+                    una organización de deportes japonés, ya que su historia habla sobre fútbol. Los japoneses tenían en
+                    mente promover el deporte en su país.</p>
+
+
+            </div>
+        </article>
+        <article>
+            <div class="img">
+                <img src="/imagen/super.jpg">
+            </div>
+            <div class="txt">
+                <h2>Super Campeones</h2>
+                <p> El anime se desarrolló apenas dos años después de que circulara el respectivo manga del mismo
+                    nombre, y tuvo gran éxito a nivel internacional, siendo emitido originalmente entre 1983 y 1986 por
+                    la cadena TV Tokyo y dirigida por Isamu Imakake. En las décadas siguientes se hicieron cortas
+                    secuelas televisivas </p>
+
+
+            </div>
+        </article>
+        <article>
+            <div class="img">
+                <img src="/imagen/k.jpg">
+            </div>
+            <div class="txt">
+                <h2>kazuyoshi miura</h2>
+                <p> Kazuyoshi Miura inspiró a Yoichi Takahashi para crear el personaje de 'Oliver Atom' (Captain
+                    Tsubasa), protagonista del manga y el anime Los Supercampeones, quien en la historia migra a Brasil
+                    para convertirse en el mejor futbolista del mundo al igual que Miura </p>
+
+
+            </div>
+        </article>
+    </section>
 </body>
+
 </html>
