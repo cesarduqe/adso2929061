@@ -50,28 +50,6 @@
             margin: 2rem auto;
             padding: 1rem;
         }
-
-        @media (max-width: 860px) {
-            main {
-                width: 500px;
-            }
-
-            article {
-                width: 500px;
-            }
-        }
-
-        @media (max-width: 480px) {
-            main {
-                width: 400px;
-            }
-
-            article {
-                flex-direction: column;
-                width: 400px;
-            }
-        }
-
         div.character {
             background: url(/imagen/steven.jpg) no-repeat center /cover;
             height: 200px;
@@ -131,6 +109,29 @@
             body {
                 background-color: #0f0;
             }
+
+            .img {
+
+                width: 100%;
+                height: 150px;
+                align-items: center;
+            }
+
+            img {
+
+                width: 200px;
+                height: 150px;
+            }
+            main {
+                width: 500px;
+            }
+
+            article {
+                width: 500px;
+                height: 700px;
+                flex-wrap: wrap;
+                align-items: center;
+            }
         }
 
         /* BreakPoint: 480px */
@@ -138,7 +139,17 @@
             body {
                 background-color: #00f;
             }
+            main {
+                width: 400px;
+            }
+
+            article {
+                width: 400px;
+                height: 800px;
+
+            }
         }
+
         img {
             width: 400px;
             height: 300px;
