@@ -1,0 +1,139 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>00-template </title>
+    <link rel="stylesheet" href="../css/style.css">
+    <style>
+        section {
+  display: grid;
+  place-items: center;
+  min-height: 100dvh
+}
+main section div.g1 {
+  display: grid;
+  place-items: center;
+  /*
+  grid-template-columns: repeat(3, 140px);
+  grid-template-rows: repeat(3, 140px);
+  */
+  grid-template-areas: 
+      "img01 img02 img03"
+      "img04 img02 img05"
+      "img06 img06 img07";
+  margin: 2rem auto;
+  width: calc(140px * 3);
+  gap: 8px;
+}
+
+main section div.g2 {
+  display: grid;
+  place-items: center;
+  /*
+  grid-template-columns: repeat(3, 140px);
+  grid-template-rows: repeat(3, 140px);
+  */
+  grid-template-areas: 
+      "img01 img01 img02 img03"
+      "img01 img01 img04 img04"
+      "img05 img06 img04 img04";
+  margin: 2rem auto;
+  width: calc(140px * 4);
+  gap: 8px;
+}
+
+div img {
+  border-radius: 4px;
+  outline: solid #000;
+  object-fit: cover;
+  height: 140px;
+  width: 140px;
+}
+
+div.g1 img.img01 {
+  grid-area: img01;
+}
+div.g1 img.img02 {
+  grid-area: img02;
+  height: calc(140px * 2 + 8px);
+}
+div.g1 img.img03 {
+  grid-area: img03;
+}
+div.g1 img.img04 {
+  grid-area: img04;
+}
+div.g1 img.img05 {
+  grid-area: img05;
+}
+div.g1 img.img06 {
+  grid-area: img06;
+  width: calc(140px * 2 + 8px);
+  
+}
+div.g1 img.img07 {
+  grid-area: img07;
+}
+
+div.g2 img.img01 {
+  grid-area: img01;
+  height: calc(140px * 2 + 8px);
+  width: calc(140px * 2 + 8px);
+}
+div.g2 img.img02 {
+  grid-area: img02;
+  
+}
+div.g2 img.img03 {
+  grid-area: img03;
+}
+div.g2 img.img04 {
+  grid-area: img04;
+  height: calc(140px * 2 + 8px);
+  width: calc(140px * 2 + 8px);
+}
+div.g2 img.img05 {
+  grid-area: img05;
+}
+div.g2 img.img06 {
+  grid-area: img06;
+}
+
+    </style>
+    
+</head>
+<body class="css">
+    <nav>
+        <a href="index.html">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.2 288 416 288c17.7 0 32-14.3 32-32s-14.3-32-32-32l-306.7 0L214.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg>
+        </a>
+    </nav>
+    <main>
+      
+        <section>
+            <div class="g1">
+                <img src="/imagen/sagitario.jpg" class="img01">
+                <img src="/imagen/Tauro.jpg" class="img02">
+                <img src="/imagen/geminis.jpg" class="img03">
+                <img src="/imagen/virgo.jpg" class="img04">
+                <img src="/imagen/capricornio.jpg" class="img05">
+                <img src="/imagen/cablleros.jpg" class="img06">
+                <img src="/imagen/cablleros.jpg" class="img07">
+              
+              </div>
+              <div class="g2">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQcYDnv5q4c5UuxkackZdlDv2uxjhAHRr3wJg&s" class="img01">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQcYDnv5q4c5UuxkackZdlDv2uxjhAHRr3wJg&s" class="img02">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQcYDnv5q4c5UuxkackZdlDv2uxjhAHRr3wJg&s" class="img03">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQcYDnv5q4c5UuxkackZdlDv2uxjhAHRr3wJg&s" class="img04">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQcYDnv5q4c5UuxkackZdlDv2uxjhAHRr3wJg&s" class="img05">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQcYDnv5q4c5UuxkackZdlDv2uxjhAHRr3wJg&s" class="img06">
+              
+              </div>
+        </section>
+        
+    </main>
+    
+</body>
+
+</html>
