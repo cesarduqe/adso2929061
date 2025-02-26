@@ -4,17 +4,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>01 - Portfolio</title>
+    <title>02- Portfolio</title>
+    <link rel="stylesheet" href="../css/bootstrap.min.css"> <!-- Se llama libreria de Bootstrap  -->
     <link rel="stylesheet" href="../css/custom.css">
-    <link rel="stylesheet" href="../css/bootstrap.min.css">
 </head>
 
 <body>
-    <!-- 01 nav-->
+    <!--01-->
     <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-custom">
         <div class="container-fluid">
-            <a class="navbar-brand fs-4" href="#">
-                <img src="images/navbar-icon.svg" alt="icon" width="60px">
+            <a class="navbar-brand" href="#">
+                <img src="images/navbar-icon.svg" alt="icon">
                 Cesar Sanchez Duque
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
@@ -27,7 +27,7 @@
                         <a class="nav-link" href="#">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">About</a>
+                        <a class="nav-link" href="#">about</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">Services</a>
@@ -36,23 +36,156 @@
                         <a class="nav-link" href="#">Portfolio</a>
                     </li>
                 </ul>
-                
             </div>
         </div>
     </nav>
-    <main class="contrast-fluid">
-        <!-- 02 hero-->
-         <div class="hero row row-cols-md-2 row-cols-1">
+    <main class="container-fluid">
+        <!--02 Hero-->
+        <div class="hero row row-cols-md-2 row-cols-1">
             <div class="col d-flex flex-column justify-content-center align-items-start px-5">
-                <h3 class="fs-3">hello I am</h3>
+                <h3 class="fs-3">Hello I am</h3>
                 <h2 class="fs-1 fw-bold">Cesar Sanchez Duque</h2>
-                <p class="text-justify"></p>
-                <a href="javaxcrip:;" class="btn bg-custom p-2 px-3 fw-bold">Hire me</a>
+                <p class="text-justify">
+                    My name is Cesar Sanchez Duque, freelance photographer with 4 years of experience in audio visual media, social networks
+                </p>
+                <a href="javascript:;" class="btn bg-custom px-3">Hire Me</a>
             </div>
             <div class="col">
-                
+
             </div>
-         </div>
+        </div>
+        <!--03 About-->
+        <div class="about row row-cols-md-2 row-cols-1">
+            <div class="col">
+
+            </div>
+            <div class="col d-flex flex-column justify-content-center align-items-start px-5">
+                <h2 class="fs-1 fw-bold">About</h2>
+                <h3 class="fs-3">why your hire me ?</h3>
+                <p class="text-justify">
+                    I am a proactive person, I am always proposing ideas, I have extensive experience in the world of photography and audiovisual production and I have gotten to work with very famous actors and directors in the television and film industry.
+                </p>
+
+
+                <h2>photographer</h2>
+                <div class="progress" role="progressbar" aria-label="Animated striped example" aria-valuenow="75"
+                    aria-valuemin="0" aria-valuemax="100">
+                    <div class="progress-bar progress-bar-striped progress-bar-animated " style="width: 75%"></div>
+                </div>
+
+
+                <h2>edition</h2>
+                <div class="progress" role="progressbar" aria-label="Animated striped example" aria-valuenow="75"
+                    aria-valuemin="0" aria-valuemax="100">
+                    <div class="progress-bar progress-bar-striped progress-bar-animated " style="width: 60%"></div>
+                </div>
+
+
+                <h2>filmmaker</h2>
+                <div class="progress" role="progressbar" aria-label="Animated striped example" aria-valuenow="75"
+                    aria-valuemin="0" aria-valuemax="100">
+                    <div class="progress-bar progress-bar-striped progress-bar-animated " style="width: 75%"></div>
+                </div>
+
+            </div>
+        </div>
+
+        <!--04 Services-->
+        <div class="services row row-cols-md-2 row-cols-1 row-cols-lg-3">
+            <div class="tittle row">
+                <h1>Services</h1>
+                <h2>Service|Provide</h2>
+            </div>
+            <!-- Card 1-->
+            <div class="col d-flex">
+                <div class="card" style="width: 18rem;">
+                    <img src="/imagen/camera-fill.svg" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">photograph</h5>
+                        <p class="card-text">professional photography service</p>
+                    </div>
+                </div>
+            </div>
+            <!-- Card 2-->
+            <div class="col d-flex">
+                <div class="card" style="width: 18rem;">
+                    <img src="/imagen/camera-reels-fill.svg" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">filmmaker</h5>
+                        <p class="card-text">professional video service</p>
+                    </div>
+                </div>
+            </div>
+            <!-- Card 3-->
+            <div class="col d-flex">
+                <div class="card" style="width: 18rem;">
+                    <img src="/imagen/tiktok.svg" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">community manager</h5>
+                        <p class="card-text">social media management</p>
+                    </div>
+                </div>
+            </div>
+            <!-- Card 4-->
+            <div class="col d-flex">
+                <div class="card" style="width: 18rem;">
+                    <img src="/imagen/filetype-jsx.svg" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">script</h5>
+                        <p class="card-text">production of film and documentary scripts</p>
+                    </div>
+                </div>
+            </div>
+            <!-- Card 5-->
+            <div class="col d-flex">
+                <div class="card" style="width: 18rem;">
+                    <img src="/imagen/film.svg" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">director </h5>
+                        <p class="card-text">character direction and video</p>
+                    </div>
+                </div>
+            </div>
+            <!-- Card 6-->
+            <div class="col d-flex">
+                <div class="card" style="width: 18rem;">
+                    <img src="/imagen/laptop.svg" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">editor</h5>
+                        <p class="card-text">professional photography editing</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--05 Portafolio-->
+        <div class="portafolio row row-cols-md-2 row-cols-1 row-cols-lg-3">
+            <div class="tittle row">
+                <h1>PORTFOLIO</h1>
+                <h3>latest projects</h3>
+            </div>
+
+            <!--Proyecto 1-->
+            <div class="col">
+                <div class="card mb-3">
+                    <img src="/imagen/imagen 1.jpg" alt="">
+                </div>
+            </div>
+
+            <!--Proyecto 2-->
+            <div class="col">
+                <div class="card mb-3">
+                    <img src="/imagen/imagen 4.jpg" alt="">
+                </div>
+            </div>
+
+            <!--Proyecto 3-->
+            <div class="col">
+                <div class="card mb-3">
+                    <img src="/imagen/imagen 3.jpg" alt="">
+                </div>
+            </div>
+        </div>
     </main>
     <script src="../js/bootstrap.bundle.min.js"></script>
 </body>
