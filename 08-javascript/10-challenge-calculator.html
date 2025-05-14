@@ -149,9 +149,24 @@
 
             }
             /**Dark Mode*/
-            &.dark{
+             &.dark{
                 background-color: #1E1E1E;
+                 input.operation {
+                    color: #fff;
+                    background: transparent;
+                    font-size: 16px;
+                    outline: none;
+                    position: absolute;
+                    top: 80px;
+                    width: 95%;
+                    text-align: right;
+                    font-weight: 500;
+                    border: 0px;
+                }
+
             }
+
+           
             
         }
     </style>
@@ -242,7 +257,20 @@
                 operation.value += btn.dataset.opr
             })
         })
+        //dark mode 
+        const darkmode = window.matchMedia('prefers-color-scheme: dark')
+        darkmode.addListener(darkmode)
+
+        function darkmodechange(dm){
+            if (dm.matches){
+                calculator.classList.add('dark')
+            }else {
+                calculator.classList.remove('dark')
+            }
+        }
+        darkmodechange(darkmode)
     </script>
+
 </body>
 
 </html>
