@@ -146,7 +146,11 @@
     function shuffle() {
       const numbers = [];
       for (let i = 0; i < 4; i++) {
-        numbers.push(getRandomNumber(100));
+        n=getRandomNumber(100);
+        while (numbers.includes(n)) {
+          n = getRandomNumber(100);
+        } 
+        numbers.push(n);
       }
       return numbers;
     }
