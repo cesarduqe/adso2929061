@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>22-challenge-baloto</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+     <style>
+    body {
+      margin: 0;
+      font-family: 'Arial', sans-serif;
+      background-color: #111;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+
+    .container {
+      width: 340px;
+      background-color: white;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 0 20px rgba(0,0,0,0.5);
+    }
+
+    .header {
+      background: linear-gradient(to right, #001f99, #00e6e6);
+      color: white;
+      padding: 1rem 0;
+      text-align: center;
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
+
+    .winner-section {
+      background: linear-gradient(to right, #0052cc, #00c2c2);
+      text-align: center;
+      padding: 2rem 1rem;
+    }
+
+    .winner-section h2 {
+      margin-top: 0;
+      font-size: 1.2rem;
+      font-weight: normal;
+    }
+
+    .winner-ball {
+      background:url(../imagen/bola.svg) no-repeat center center;
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      margin: 1rem auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: black;
+      font-size: 2rem;
+      font-weight: bold;
+      box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+    }
+
+    .winner-section p {
+      margin: 0;
+      font-size: 1rem;
+    }
+
+    .number-row {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      padding: 1rem;
+      background: linear-gradient(to right, #001f99, #00e6e6);
+    }
+
+    .ball {
+        background:url(../imagen/bola.svg) no-repeat center center;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: black;
+      font-weight: bold;
+      font-size: 1.1rem;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+    }
+
+    .btn-wrapper {
+      padding: 1rem;
+      text-align: center;
+    }
+
+    button {
+      background: linear-gradient(to right, #001f99, #00e6e6);
+      color: white;
+      border: none;
+      border-radius: 25px;
+      padding: 0.75rem 2rem;
+      font-size: 1.1rem;
+      cursor: pointer;
+      transition: transform 0.2s ease;
+    }
+
+    button:hover {
+      transform: scale(1.05);
+    }
+  </style>
+
+</head>
+
+<body class="js">
+   
+       
+       <div class="container">
+    <div class="header">Loteria</div>
+
+    <div class="winner-section">
+      <h2>numero ganador</h2>
+      <div class="winner-ball" id="winner-number">7</div>
+      <p>felicitaciones</p>
+    </div>
+
+    <div class="number-row" id="number-list">
+      <!-- Números aquí -->
+    </div>
+
+    <div class="btn-wrapper">
+      <button id="shuffle-btn">jugar</button>
+    </div>
+  </div>
+
+  <script>
+    const list = document.getElementById('number-list');
+    const winnerDisplay = document.getElementById('winner-number');
+    const btn = document.getElementById('shuffle-btn');
+
+    function getRandomNumber(max) {
+      return Math.floor(Math.random() * max) + 1;
+    }
+
+    function shuffle() {
+      const numbers = [];
+      for (let i = 0; i < 4; i++) {
+        numbers.push(getRandomNumber(100));
+      }
+      return numbers;
+    }
+
+    function render() {
+      const balls = shuffle();
+      const winner = getRandomNumber(100);
+      winnerDisplay.textContent = winner;
+
+      list.innerHTML = "";
+      balls.forEach(num => {
+        const div = document.createElement('div');
+        div.className = 'ball';
+        div.textContent = num;
+        list.appendChild(div);
+      });
+    }
+
+    btn.addEventListener('click', render);
+    render(); // Mostrar al cargar
+  </script>
+</body>
+</html>
