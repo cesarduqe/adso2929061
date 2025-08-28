@@ -5,7 +5,8 @@ try {
 } catch (PDOException $e) {
     echo 'Error: ' . $e->getMessage();
 }
-//login
+
+// Login
 function login($email, $pass, $conx)
 {
     try {
@@ -97,30 +98,53 @@ function listSexes($conx)
     }
 }
 
+function addPet($name, $specie_id, $breed_id, $sex_id, $photo, $conx)
+{
+    try {
+        $sql = "INSERT INTO pets (name, specie_id, breed_id, sex_id, photo) VALUES (:name, :specie_id, :breed_id, :sex_id, :photo)";
+        $stmt = $conx->prepare($sql);
+        $stmt->bindparam(":name", $name);
+        $stmt->bindparam(":specie_id", $specie_id);
+        $stmt->bindparam(":breed_id", $breed_id);
+        $stmt->bindparam(":sex_id", $sex_id);
+        $stmt->bindparam(":photo", $photo);
+        if ($stmt->execute()) {
+            return true;
+        } else {
+            return false;
+        }
+    } catch (PDOException $e) {
+        echo "Error: " . $e->getMessage();
+    }
+}
+
+//show pet
 function showPet($id, $conx)
 {
     try {
-        $sql = "SELECT  p.name AS name,
+        $sql = "SELECT p.name AS name,
                         p.photo AS photo,
                         s.name AS specie,
                         b.name AS breed,
-                        x.name AS sex
+                        x.name AS sex                       
                     FROM pets AS p,
                         species AS s,
-                        breeds AS b
+                        breeds AS b,
                         sexes AS x
                     WHERE s.id = p.specie_id
                     AND b.id = p.breed_id
                     AND p.id = :id";
         $stmt = $conx->prepare($sql);
         $stmt->bindparam(":id", $id);
+        $stmt->execute();
         return $stmt->fetch();
     } catch (PDOException $e) {
         echo 'Error: ' . $e->getMessage();
     }
 }
 
-function deletepet($id, $conx)
+//delete pet
+function deletePet($id, $conx)
 {
     try {
         $sql = "DELETE
@@ -134,7 +158,39 @@ function deletepet($id, $conx)
             return false;
         }
     } catch (PDOException $e) {
-        echo "error: " . $e->getMessage();
+        echo 'Error: ' . $e->getMessage();
     }
 }
-?>
+//para eliminar la foto se utiliza la fintion unlink
+function updatePet($id, $name, $specie_id, $breed_id, $sex_id, $photo, $conx)
+{
+    try {
+        $sql = "UPDATE pets SET name = :name, specie_id = :specie_id, breed_id = :breed_id, sex_id = :sex_id, photo = :photo WHERE id = :id";
+        $stmt = $conx->prepare($sql);
+        $stmt->bindparam(":id", $id);
+        $stmt->bindparam(":name", $name);
+        $stmt->bindparam(":specie_id", $specie_id);
+        $stmt->bindparam(":breed_id", $breed_id);
+        $stmt->bindparam(":sex_id", $sex_id);
+        $stmt->bindparam(":photo", $photo);
+        if ($stmt->execute()) {
+            return true;
+        } else {
+            return false;
+        }
+    } catch (PDOException $e) {
+        echo "Error: " . $e->getMessage();
+    }
+}
+function getPetPhoto($id, $conx)
+{
+    try {
+        $sql = "SELECT photo FROM pets WHERE id = :id";
+        $stmt = $conx->prepare($sql);
+        $stmt->bindparam(":id", $id);
+        $stmt->execute();
+        return $stmt->fetchColumn();
+    } catch (PDOException $e) {
+        echo 'Error: ' . $e->getMessage();
+    }
+}
