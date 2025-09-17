@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="es">
+    
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>20-methods-numbers</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+
+  
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      background: #111;
+      color: #fff;
+      text-align: center;
+    }
+
+    /* PANTALLA DE SELECCIÓN */
+    #selection {
+  
+      background: url("/08-javascript/images/sleccionar.svg") no-repeat center center;
+      background-size: cover;
+       width: 400px;
+      height: 600px;
+      margin: 20px auto;
+      
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .character {
+      display: inline-block;
+      width: 60px;
+      height: 60px;
+      margin: 10px;
+      background-size: cover;
+      background-position: center;
+      border: 3px solid white;
+      cursor: pointer;
+    }
+
+    /* CONTENEDOR DEL JUEGO */
+    #gameContainer {
+      display: none;
+      position: relative;
+      width: 400px;
+      height: 600px;
+      margin: 20px auto;
+      background: url("/08-javascript/images/cancha.png") no-repeat center center;
+      background-size: cover;
+      overflow: hidden;
+      border: 5px solid #fff;
+    }
+
+    #player {
+      position: absolute;
+      bottom: 10px;
+      left: 180px;
+      width: 40px;
+      height: 40px;
+      background: url("img/player.png") no-repeat center center;
+      background-size: cover;
+    }
+
+    .ball {
+      position: absolute;
+      width: 30px;
+      height: 30px;
+      background: url("/08-javascript/images/balon.svg") no-repeat center center;
+      background-size: cover;
+    }
+
+    #scoreBoard {
+      margin: 10px;
+      font-size: 20px;
+      color: white;
+    }
+
+    #gameOver {
+      display: none;
+      font-size: 28px;
+      margin-top: 20px;
+      color: yellow;
+    }
+  </style>
+</head>
+<body>
+
+
+  <!-- SELECCIÓN DE JUGADOR -->
+  <div id="selection">
+  
+    <div class="character" style="background-image:url('/08-javascript/images/cr7.png')" data-image="/08-javascript/images/cr7.png"></div>
+    <div class="character" style="background-image:url('/08-javascript/images/neymar.png')" data-image="/08-javascript/images/neymar.png"></div>
+    <div class="character" style="background-image:url('/08-javascript/images/messi.png')" data-image="/08-javascript/images/messi.png"></div>
+  </div>
+
+  <!-- JUEGO -->
+  <div id="gameContainer">
+    <div id="scoreBoard">Score: 0</div>
+    <div id="player"></div>
+  </div>
+
+  <div id="gameOver">GAME OVER <br> 
+
+  <script>
+    const characters = document.querySelectorAll(".character");
+    const selection = document.getElementById("selection");
+    const gameContainer = document.getElementById("gameContainer");
+    const player = document.getElementById("player");
+    const scoreBoard = document.getElementById("scoreBoard");
+    const gameOverText = document.getElementById("gameOver");
+
+    let playerImage = "img/player.png";
+    let playerX = 180;
+    let gameInterval, ballInterval;
+    let score = 0;
+    let isGameOver = false;
+
+    // Selección de jugador
+    characters.forEach(char => {
+      char.addEventListener("click", () => {
+        playerImage = char.dataset.image;
+        player.style.backgroundImage = `url(${playerImage})`;
+        selection.style.display = "none";
+        gameContainer.style.display = "block";
+        startGame();
+      });
+    });
+
+    // Movimiento jugador
+    document.addEventListener("keydown", (e) => {
+      if (isGameOver) return;
+      if (e.key === "ArrowLeft" && playerX > 0) {
+        playerX -= 20;
+      } else if (e.key === "ArrowRight" && playerX < 360) {
+        playerX += 20;
+      }
+      player.style.left = playerX + "px";
+    });
+
+    // Iniciar juego
+    function startGame() {
+      gameInterval = setInterval(updateScore, 1000);
+      ballInterval = setInterval(createBall, 1500);
+    }
+
+    function updateScore() {
+      if (!isGameOver) {
+        score++;
+        scoreBoard.textContent = "Score: " + score;
+      }
+    }
+
+    function createBall() {
+      const ball = document.createElement("div");
+      ball.classList.add("ball");
+      let ballX = Math.floor(Math.random() * 370);
+      ball.style.left = ballX + "px";
+      ball.style.top = "0px";
+      gameContainer.appendChild(ball);
+
+      let ballFall = setInterval(() => {
+        if (isGameOver) {
+          clearInterval(ballFall);
+          return;
+        }
+        let ballTop = parseInt(ball.style.top);
+        ballTop += 12;
+        ball.style.top = ballTop + "px";
+ 
+
+        // Detección de colisión
+        if (ballTop > 550 && ballTop < 590 && Math.abs(ballX - playerX) < 40) {
+          endGame();
+          clearInterval(ballFall);
+        }
+
+        // Eliminar balones que salen de pantalla
+        if (ballTop > 600) {
+          ball.remove();
+          clearInterval(ballFall);
+        }
+      }, 30);
+    }
+
+    function endGame() {
+      isGameOver = true;
+      clearInterval(gameInterval);
+      clearInterval(ballInterval);
+      gameOverText.style.display = "block";
+    }
+  </script>
+</body>
+</html>
