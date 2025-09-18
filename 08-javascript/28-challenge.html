@@ -1,14 +1,11 @@
 <!DOCTYPE html>
 <html lang="es">
-    
-
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>20-methods-numbers</title>
-    <link rel="stylesheet" href="../css/style.css">
-    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
-
-  
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Juego de Fútbol</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="icon" href="images/favicon.ico" type="image/x-icon">
   <style>
     body {
       margin: 0;
@@ -16,24 +13,19 @@
       font-family: Arial, sans-serif;
       background: #111;
       color: #fff;
-      text-align: center;
+      text-align: center;position:relative;
     }
-
-    /* PANTALLA DE SELECCIÓN */
     #selection {
-  
       background: url("/08-javascript/images/sleccionar.svg") no-repeat center center;
       background-size: cover;
-       width: 400px;
+      width: 400px;
       height: 600px;
       margin: 20px auto;
-      
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
     }
-
     .character {
       display: inline-block;
       width: 60px;
@@ -44,8 +36,6 @@
       border: 3px solid white;
       cursor: pointer;
     }
-
-    /* CONTENEDOR DEL JUEGO */
     #gameContainer {
       display: none;
       position: relative;
@@ -57,7 +47,6 @@
       overflow: hidden;
       border: 5px solid #fff;
     }
-
     #player {
       position: absolute;
       bottom: 10px;
@@ -67,48 +56,40 @@
       background: url("img/player.png") no-repeat center center;
       background-size: cover;
     }
-
     .ball {
       position: absolute;
-      width: 30px;
-      height: 30px;
+      width: 20px;
+      height: 20px;
       background: url("/08-javascript/images/balon.svg") no-repeat center center;
       background-size: cover;
     }
-
     #scoreBoard {
       margin: 10px;
       font-size: 20px;
       color: white;
     }
-
     #gameOver {
       display: none;
       font-size: 28px;
       margin-top: 20px;
       color: yellow;
+      position:absolute;
+      top: 500;
+      left: 200;
     }
   </style>
 </head>
 <body>
-
-
-  <!-- SELECCIÓN DE JUGADOR -->
   <div id="selection">
-  
     <div class="character" style="background-image:url('/08-javascript/images/cr7.png')" data-image="/08-javascript/images/cr7.png"></div>
     <div class="character" style="background-image:url('/08-javascript/images/neymar.png')" data-image="/08-javascript/images/neymar.png"></div>
     <div class="character" style="background-image:url('/08-javascript/images/messi.png')" data-image="/08-javascript/images/messi.png"></div>
   </div>
-
-  <!-- JUEGO -->
   <div id="gameContainer">
     <div id="scoreBoard">Score: 0</div>
     <div id="player"></div>
   </div>
-
-  <div id="gameOver">GAME OVER <br> 
-
+  <div id="gameOver">GAME OVER</div>
   <script>
     const characters = document.querySelectorAll(".character");
     const selection = document.getElementById("selection");
@@ -119,11 +100,10 @@
 
     let playerImage = "img/player.png";
     let playerX = 180;
-    let gameInterval, ballInterval;
+    let ballInterval;
     let score = 0;
     let isGameOver = false;
 
-    // Selección de jugador
     characters.forEach(char => {
       char.addEventListener("click", () => {
         playerImage = char.dataset.image;
@@ -134,7 +114,6 @@
       });
     });
 
-    // Movimiento jugador
     document.addEventListener("keydown", (e) => {
       if (isGameOver) return;
       if (e.key === "ArrowLeft" && playerX > 0) {
@@ -145,17 +124,8 @@
       player.style.left = playerX + "px";
     });
 
-    // Iniciar juego
     function startGame() {
-      gameInterval = setInterval(updateScore, 1000);
-      ballInterval = setInterval(createBall, 1500);
-    }
-
-    function updateScore() {
-      if (!isGameOver) {
-        score++;
-        scoreBoard.textContent = "Score: " + score;
-      }
+      ballInterval = setInterval(createBall, 1000);
     }
 
     function createBall() {
@@ -172,19 +142,18 @@
           return;
         }
         let ballTop = parseInt(ball.style.top);
-        ballTop += 12;
+        ballTop += 4;
         ball.style.top = ballTop + "px";
- 
 
-        // Detección de colisión
         if (ballTop > 550 && ballTop < 590 && Math.abs(ballX - playerX) < 40) {
-          endGame();
+          score++;
+          scoreBoard.textContent = "Score: " + score;
+          ball.remove();
           clearInterval(ballFall);
         }
 
-        // Eliminar balones que salen de pantalla
         if (ballTop > 600) {
-          ball.remove();
+          endGame();
           clearInterval(ballFall);
         }
       }, 30);
@@ -192,7 +161,6 @@
 
     function endGame() {
       isGameOver = true;
-      clearInterval(gameInterval);
       clearInterval(ballInterval);
       gameOverText.style.display = "block";
     }
