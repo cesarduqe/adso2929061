@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>12 - challenge</title>
+  <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: url('/09-jQuery/images/fondo.jpg') center/cover;
+      color: white;
+      text-align: center;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+    .game-container {
+      background: rgba(0,0,0,0.7);
+      padding: 25px;
+      border-radius: 20px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.6);
+      width: 420px;
+    }
+    h1 { margin-top: 0; }
+    .board {
+      width: 360px;
+      height: 360px;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      grid-gap: 10px;
+      margin: 20px auto;
+    }
+    .card {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      cursor: pointer;
+      transform-style: preserve-3d;
+      transition: transform 0.4s;
+    }
+    .card.flip { transform: rotateY(180deg); }
+    .card .front, .card .back {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      border-radius: 10px;
+      backface-visibility: hidden;
+    }
+    .card .front {
+      background: white url('/09-jQuery/images/interrogacion.jpg') center/60% no-repeat;
+    }
+    .card .back {
+      transform: rotateY(180deg);
+      background-size: cover;
+      background-position: center;
+      border: 2px solid #fff;
+    }
+    .score { margin-top: 10px; font-size: 1.2em; }
+    #reset {
+      margin-top: 10px;
+      padding: 10px 25px;
+      background: #00bcd4;
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      font-size: 1em;
+      cursor: pointer;
+    }
+    #reset:hover { background: #0097a7; }
+    .stats { margin-top: 10px; font-size: 1.1em; }
+  </style>
+</head>
+<body>
+  <div class="game-container">
+    <h1>Concentrese de Autos 🏎️</h1>
+    <div class="board"></div>
+    <div class="score">PAREJAS: <span id="pairs">0</span> / 6</div>
+    <div class="stats">
+      INTENTOS: <span id="attempts">0</span> | SCORE: <span id="score">0</span> | TIEMPO: <span id="timer">0</span>s
+    </div>
+    <button id="reset">Reiniciar</button>
+  </div>
+  <script>
+    $(document).ready(function() {
+      const images = [
+        "/09-jQuery/images/gtr.jpg",
+        "/09-jQuery/images/lambo.jpg",
+        "/09-jQuery/images/divo.jpg",
+        "/09-jQuery/images/bmw.jpg",
+        "/09-jQuery/images/rs.jpg",
+        "/09-jQuery/images/gt3.jpg"
+      ];
+      let cards, firstCard, secondCard, lock, totalPairs, score, attempts, timer, seconds, gameStarted;
+      function shuffle(array) { return array.sort(() => 0.5 - Math.random()); }
+      function startTimer() {
+        gameStarted = true;
+        seconds = 0;
+        $('#timer').text(seconds);
+        timer = setInterval(() => {
+          seconds++;
+          $('#timer').text(seconds);
+        }, 1000);
+      }
+      function stopTimer() { clearInterval(timer); gameStarted = false; }
+      function generateBoard() {
+        $('.board').empty();
+        totalPairs = 0; score = 0; attempts = 0; firstCard = null; secondCard = null; lock = false;
+        $('#pairs').text(totalPairs); $('#score').text(score); $('#attempts').text(attempts); $('#timer').text(0);
+        stopTimer(); cards = shuffle(images.concat(images));
+        cards.forEach(img => {
+          const card = $(`
+            <div class="card" data-img="${img}">
+              <div class="front"></div>
+              <div class="back" style="background-image:url('${img}')"></div>
+            </div>
+          `);
+          $('.board').append(card);
+        });
+      }
+      function flipCard() {
+        if (!gameStarted) startTimer();
+        if (lock) return;
+        if ($(this).hasClass('flip')) return;
+        $(this).addClass('flip');
+        if (!firstCard) { firstCard = $(this); return; }
+        secondCard = $(this);
+        lock = true; attempts++; $('#attempts').text(attempts);
+        const img1 = firstCard.data('img'); const img2 = secondCard.data('img');
+        if (img1 === img2) {
+          totalPairs++; score += 100;
+          $('#pairs').text(totalPairs); $('#score').text(score);
+          firstCard = null; secondCard = null; lock = false;
+          if (totalPairs === 6) {
+            stopTimer();
+            setTimeout(() => alert(`🎉 ¡Completaste el juego en ${seconds}s con ${score} puntos!`), 500);
+          }
+        } else {
+          score -= 20; $('#score').text(score);
+          setTimeout(() => {
+            firstCard.removeClass('flip');
+            secondCard.removeClass('flip');
+            firstCard = null; secondCard = null; lock = false;
+          }, 800);
+        }
+      }
+      $(document).on('click', '.card', flipCard);
+      $('#reset').click(() => generateBoard());
+      generateBoard();
+    });
+  </script>
+</body>
+</html>
